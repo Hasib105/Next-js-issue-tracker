@@ -1,20 +1,21 @@
-import React from 'react'
-import { Button, Table, TableCell, TableColumnHeaderCell, TableRow } from '@radix-ui/themes'
-import Link from 'next/link'
-import prisma from '@/prisma/client'
-import IssueStatusBadge from '../components/IssueStatusBadge'
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import {
+  Table,
+  TableCell,
+  TableColumnHeaderCell,
+  TableRow,
+} from "@radix-ui/themes";
+import React from "react";
+import IssueStatusBadge from "../components/IssueStatusBadge";
+import IssueActions from "./issueActions";
 
-const  IssuesPage = async () => {
-  
-  const issues = await prisma.issue.findMany();
+const LoadingIssuesPage = () => {
+  const issues = [1, 2, 3, 4, 5];
   return (
     <div>
-      <div className="mb-5">
-        <Button>
-          <Link href="/issues/new">New Issue</Link>
-        </Button>
-      </div>
-
+        
+      <IssueActions />
       <Table.Root variant="surface">
         <Table.Header>
           <TableRow>
@@ -29,18 +30,18 @@ const  IssuesPage = async () => {
         </Table.Header>
         <Table.Body>
           {issues.map((issue) => (
-            <TableRow key={issue.id}>
+            <TableRow key={issue}>
               <TableCell>
-                {issue.title}
+                <Skeleton />
                 <div className="block md:hidden">
-                  <IssueStatusBadge status={issue.status} />
+                  <Skeleton />
                 </div>
               </TableCell>
               <TableCell className="hidden md:table-cell">
-                <IssueStatusBadge status={issue.status} />
+                <Skeleton />
               </TableCell>
               <TableCell className="hidden md:table-cell">
-                {issue.createdAt.toDateString()}
+                <Skeleton />
               </TableCell>
             </TableRow>
           ))}
@@ -48,6 +49,6 @@ const  IssuesPage = async () => {
       </Table.Root>
     </div>
   );
-}
+};
 
-export default IssuesPage
+export default LoadingIssuesPage;
