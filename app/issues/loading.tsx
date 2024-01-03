@@ -8,7 +8,7 @@ import {
 } from "@radix-ui/themes";
 import React from "react";
 import IssueStatusBadge from "../components/IssueStatusBadge";
-import IssueActions from "./issueActions";
+import IssueActions from "./IssueActions";
 
 const LoadingIssuesPage = () => {
   const issues = [1, 2, 3, 4, 5];
