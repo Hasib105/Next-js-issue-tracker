@@ -9,7 +9,7 @@ const AssigneeSelect = () => {
         <Select.Content>
             <Select.Group>
                 <Select.Label>Suggestions</Select.Label>
-                <Select.Item value='1'>Hasib Ahmed</Select.Item>
+                <Select.Item value='1'>Hasib Ahmad</Select.Item>
             </Select.Group>
         </Select.Content>
     </Select.Root>
